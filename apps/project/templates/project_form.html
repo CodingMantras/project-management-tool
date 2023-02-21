@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static crispy_forms_tags %}
+
+{% block title %}
+Projects {% if 'create' in request.path %}Create {% else %}Update{% endif %} Form
+{% endblock title %}
+
+{% block leftbar %}
+    <div class="col-sm-3">
+
+    </div>
+{% endblock leftbar %}
+{% block content %}
+    <div class="col-sm-9">
+        <form action="" method="post">
+            <legend class="border-bottom">{% if 'create' in request.path %}Create {% else %}Update{% endif %} Project</legend>
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-sm btn-ouline-primary mt-2">{% if 'create' in request.path %}Create {% else %}Update{% endif %} Project</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Projects {{project}}
+{% endblock title %}
+
+{% block leftbar %}
+    <div class="col-sm-3">
+
+    </div>
+{% endblock leftbar %}
+{% block content %}
+    <div class="col-sm-9">
+        <form action="" method="post">
+            {% csrf_token %}
+            <p class="lead">You are about to delete Project: '{{project}}'. Do you want to preceed?</p>
+            <button type="submit" class="btn btn-sm btn-outline-danger">Yes</button>
+            <a href="{% url 'project:project_detail_url' project.id %}" type="submit" class="btn btn-sm btn-outline-primary">No</a>
+        </form>
+    </div>
+{% endblock content %}

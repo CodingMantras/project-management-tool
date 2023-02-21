@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Projects
+{% endblock title %}
+
+{% block leftbar %}
+    <div class="col-sm-3">
+
+    </div>
+{% endblock leftbar %}
+{% block content %}
+    <div class="col-sm-9">
+        {% for project  in projects %}
+            <a href="{% url 'project:project_detail_url' project.id %}">{{project}}</a>
+        {% endfor %}
+    </div>
+{% endblock content %}
