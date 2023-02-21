@@ -9,7 +9,8 @@ from .models import Project
 class ProjectCreateView(LoginRequiredMixin, generic.CreateView):
     model = Project
     template_name = 'project_form.html'
-    fields = ('name', 'description')
+    fields = ('name', 'description', 'end_date',
+              'assigned_to', 'status', 'is_active')
     success_url = reverse_lazy('project:project_list_url')
     login_url = settings.LOGIN_URL
 

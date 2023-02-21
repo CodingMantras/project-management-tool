@@ -21,9 +21,6 @@ class Project(CreationModificationDateBase):
                                    on_delete=models.CASCADE,
                                    related_name="projects_created"
                                    )
-    assigned_to = models.ManyToManyField("users.CustomUser",
-                                         related_name="projects_assigned_to"
-                                         )
     STATUS_CHOICES = [
         ("in_progress", "In Progress"),
         ("completed", "Completed"),
@@ -34,11 +31,9 @@ class Project(CreationModificationDateBase):
                               default="in_progress"
                               )
     is_active = models.BooleanField(default=True)
-    team = models.ForeignKey("teams.Team",
-                             on_delete=models.CASCADE,
-                             related_name='projects',
-                             null=True
-                             )
+    teams = models.ManyToManyField('teams.Team',
+                                   related_name='projects'
+                                   )
 
     def __str__(self):
         return self.name

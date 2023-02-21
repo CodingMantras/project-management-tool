@@ -1,14 +1,13 @@
 from django.urls import reverse
 from django.db import models
 
-from users.models import CustomUser
 from tasks.models import Task
 from config.models import CreationModificationDateBase
 
 
 class Team(CreationModificationDateBase):
     name = models.CharField(max_length=255)
-    members = models.ManyToManyField(CustomUser, related_name='teams')
+    members = models.ManyToManyField('users.CustomUser', related_name='teams')
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -64,7 +63,7 @@ class TeamMember(models.Model):
     ]
 
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
     role = models.CharField(choices=TEAM_ROLES,
                             default='member',
                             max_length=20
@@ -77,7 +76,7 @@ class TeamMember(models.Model):
 
 class Attachment(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
     file = models.FileField(upload_to='attachments')
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
