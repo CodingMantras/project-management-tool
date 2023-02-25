@@ -17,12 +17,6 @@ urlpatterns = [
          name='profile'
          ),
 
-    path('registration_under_approval/',
-         views.RegistrationUnderApproval.as_view(
-             template_name='users/registration_under_approval.html'),
-         name='registration_under_approval_url'
-         ),
-
     path('',
          auth_views.LoginView.as_view(template_name='users/login.html'),
          name='login'

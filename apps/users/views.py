@@ -12,22 +12,12 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            user = User.objects.get(username=username)
-            user.is_active = False
-            user.save()
             messages.success(
                 request, f'Your account with {username} has been created! You are now able to log in')
-            return redirect('users:registration_under_approval_url')
+            return redirect('users:login')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
-
-
-class RegistrationUnderApproval(TemplateView):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Do something here!
-        return context
 
 
 @login_required

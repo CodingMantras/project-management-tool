@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('users.urls', namespace='users')),
 
     path('project/', include('project.urls', namespace='project')),
+    path('administrator/', include('admindashboard.urls', namespace='administrator')),
 
 ]
 

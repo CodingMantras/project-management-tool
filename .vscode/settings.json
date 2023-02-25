@@ -25,5 +25,8 @@
         "tzdata",
         "wcwidth",
         "zoneinfo"
+    ],
+    "cSpell.words": [
+        "Admindashboard"
     ]
 }
